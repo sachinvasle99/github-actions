@@ -1,0 +1,13 @@
+name: shell command
+
+on: [push]
+jobs:
+  run-shell-cmd:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: string
+        run: echo "welcome sachin"
+      - name: multi line string
+        run: |
+          node -v 
+          npm -v
