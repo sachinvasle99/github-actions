@@ -2,25 +2,18 @@ name: shell command
 
 on: [push]
 jobs:
-  run-shell-cmd:
+  run-git-actions:
     runs-on: ubuntu-latest
     steps: 
-      - name: string
-        run: echo "welcome sachin"
-      - name: multi line string
+      - name: list files
         run: |
-          node -v 
-          npm -v
-      - name: python command
-        run: |
-          import platform
-          print(platform.processor())
-        shell: python     
-  run-windows-cmd:
-    runs-on: windows-latest
-    steps: 
-      - name: Directory powershell
-        run: Get-Location
-      - name: Directory bash
-        run: pwd
-        shell: bash
+          pwd
+          ls -alh
+  
+      - name: checkout 
+        uses: actions/checkout@v2
+      
+      - name: List all files after checkout
+        run: | 
+          pwd
+          ls -alh
