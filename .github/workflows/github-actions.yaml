@@ -21,3 +21,5 @@ jobs:
         run: | 
           pwd
           ls -a
+          ls
+          
