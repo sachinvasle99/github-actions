@@ -1,13 +1,33 @@
-name: shell command
+name: Folder-Specific Workflow
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  run-shell-cmd:
+  cd1:
+    if: ${{ contains(github.event_path, 'folder1') }}
     runs-on: ubuntu-latest
-    steps: 
-      - name: string
-        run: echo "welcome sachin"
-      - name: multi line string
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run CD1 Job
         run: |
-          node -v 
-          npm -v
+          echo "Running CD1 Job"
+          # Add your CD1 job steps here
+
+  cd2:
+    if: ${{ contains(github.event_path, 'folder2') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run CD2 Job
+        run: |
+          echo "Running CD2 Job"
+          # Add your CD2 job steps here
