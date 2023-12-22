@@ -1,26 +1,33 @@
-name: shell command
+name: Folder-Specific Workflow
 
 on:
-  repository_dispatch:
-    types: [bcd_release]
+  push:
+    branches:
+      - main
+
 jobs:
-  run-git-actions:
+  cd1:
+    if: ${{ contains(github.event_path, 'folder1') }}
     runs-on: ubuntu-latest
-    steps: 
-      - name: list files
-        run: |
-          pwd
-          ls -a
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKPLACE
-        
-  
-      - name: checkout 
+
+    steps:
+      - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: List all files after checkout
-        run: | 
-          pwd
-          ls -a
-          ls
+
+      - name: Run CD1 Job
+        run: |
+          echo "Running CD1 Job"
+          # Add your CD1 job steps here
+
+  cd2:
+    if: ${{ contains(github.event_path, 'folder2') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run CD2 Job
+        run: |
+          echo "Running CD2 Job"
+          # Add your CD2 job steps here
