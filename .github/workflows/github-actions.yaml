@@ -10,7 +10,7 @@ on:
 
 jobs:
   cd1:
-    if: if: "contains(github.event.head_commit.modified, 'folder1/') || contains(github.event.head_commit.added, 'folder1/')"
+    if: "contains(github.event.head_commit.modified, 'folder1/') || contains(github.event.head_commit.added, 'folder1/')"
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +23,7 @@ jobs:
           # Add your CD1 job steps here
 
   cd2:
-    if: if: "contains(github.event.head_commit.modified, 'folder2/') || contains(github.event.head_commit.added, 'folder2/')"
+    if: "contains(github.event.head_commit.modified, 'folder2/') || contains(github.event.head_commit.added, 'folder2/')"
     runs-on: ubuntu-latest
 
     steps:
